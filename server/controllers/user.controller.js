@@ -1,5 +1,5 @@
 import User from '../models/user.model'
-import _ from 'lodash'
+// import _ from 'lodash'
 import errorHandler from './../helpers/dbErrorHandler'
 
 const create = (req, res, next) => {
@@ -49,7 +49,7 @@ const list = (req, res) => {
 
 const update = (req, res, next) => {
   let user = req.profile
-  user = _.extend(user, req.body)
+  // user = _.extend(user, req.body)  //removed lodash
   user.updated = Date.now()
   user.save((err) => {
     if (err) {
