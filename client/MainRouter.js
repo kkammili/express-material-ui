@@ -22,7 +22,8 @@ class MainRouter extends Component {
         {/*<PrivateRoute path="/user/edit/:userId" component={EditProfile}/>*/}
         {/*<Route path="/user/:userId" component={Profile}/>*/}
       </Switch>
-    </div>)
+    </div>
+    )
   }
 }
 

@@ -9,7 +9,7 @@ const isActive = (history, path) => {
     return {color: '#ffffff'}
 }
 const Menu = withRouter(({history}) => (
-  <div>
+  <div className={'bg-dark'}>
       <Link to="/">
           MERN Skeleton
       </Link>
