@@ -5,6 +5,7 @@ import {routerMiddleware} from 'react-router-redux'
 import {createMemoryHistory} from 'history'
 import reducer from './reducer'
 import logger from 'redux-logger'
+import {composeWithDevTools} from 'remote-redux-devtools'
 // import DevTools from '../DevTools/DevTools'
 // import {persistState} from 'redux-devtools'
 
@@ -23,7 +24,7 @@ const store = createStore(
   Map(),
   compose(
     applyMiddleware(...middlewares),
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
       // DevTools.instrument(),
       // persistState()
   )

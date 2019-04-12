@@ -80,7 +80,8 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "remote-redux-devtools": "^0.5.16"
   },
   "yarnVersion": "1.15.2"
 }
