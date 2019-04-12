@@ -3,12 +3,14 @@ import {applyMiddleware, createStore, compose} from 'redux'
 import thunk from 'redux-thunk'
 import {routerMiddleware} from 'react-router-redux'
 // import createHistory from 'history.createBrowserHistory'
-const createHistory = require('history').createBrowserHistory
+// const createHistory = require('history').createBrowserHistory
+import {createMemoryHistory} from 'history'
 import reducer from './reducer'
 import logger from 'redux-logger'
 import DevTools from '../DevTools/DevTools'
+import {persistState} from 'redux-devtools'
 
-export const history = createHistory()
+export const history = createMemoryHistory()
 const middlewares = [
   thunk,
   routerMiddleware(history)
@@ -23,8 +25,8 @@ const store = createStore(
   Map(),
   compose(
     applyMiddleware(...middlewares),
-    DevTools.instrument()
-    // window && window.devToolsExtension ? window.devToolsExtension() : f => f
+    DevTools.instrument(),
+    persistState()
   )
 )
 
