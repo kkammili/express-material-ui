@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
-import DevTools from '../DevTools/DevTools'
+// import DevTools from '../DevTools/DevTools'
 import store from '../redux/store'
 import Home from './core/Users/Home'
 import Users from './user/Users'
@@ -26,7 +26,7 @@ class MainRouter extends Component {
             {/* <PrivateRoute path="/user/edit/:userId" component={EditProfile}/> */}
             {/* <Route path="/user/:userId" component={Profile}/> */}
           </Switch>
-          <DevTools/>
+          {/*<DevTools/>*/}
         </Provider>
       </div>
     )

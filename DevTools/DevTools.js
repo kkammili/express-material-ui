@@ -3,8 +3,6 @@ import {createDevTools} from 'redux-devtools'
 import DockMonitor from 'redux-devtools-dock-monitor'
 import Inspector from 'redux-devtools-inspector'
 
-const colors = themes['google']
-
 const DevTools = createDevTools(
         <DockMonitor
             toggleVisibilityKey='ctrl-h'
