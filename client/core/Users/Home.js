@@ -4,6 +4,9 @@ import {withStyles} from 'material-ui/styles'
 import Card, {CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import seashellImg from '../../assets/images/seashell.jpg'
+import {getUser} from './redux/actions'
+import {connect} from 'react-redux'
+import {compose} from 'redux'
 
 
 const styles = theme => ({
@@ -25,6 +28,11 @@ class Home extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired
   }
+  componentDidMount(){
+      console.log(this.props, '<---- props check')
+      this.props.getUser()
+  }
+
     render() {
         const {classes} = this.props
         return (
@@ -45,5 +53,7 @@ class Home extends Component {
     }
 }
 
-
-export default withStyles(styles)(Home)
+export default compose(
+    withStyles(styles, {name:'Home'}),
+    connect(null, {getUser})
+)(Home)

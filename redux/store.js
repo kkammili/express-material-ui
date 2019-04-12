@@ -5,7 +5,7 @@ import {routerMiddleware} from 'react-router-redux'
 import {createMemoryHistory} from 'history'
 import reducer from './reducer'
 import logger from 'redux-logger'
-import {composeWithDevTools} from 'remote-redux-devtools'
+// import {composeWithDevTools} from 'remote-redux-devtools'
 // import DevTools from '../DevTools/DevTools'
 // import {persistState} from 'redux-devtools'
 
