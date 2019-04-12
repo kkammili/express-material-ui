@@ -3,7 +3,7 @@ import config from '../../config/config'
 // import {addErrorInterceptor} from 'c2-error'
 import {Map} from 'immutable'
 
-import browserStorage from '../../app/browserStorage'
+import browserStorage from '../../client/assets/browserStorage'
 
 const ajax = axios.create({baseURL: config.apiBaseURL})
 
