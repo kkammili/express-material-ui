@@ -19,12 +19,13 @@ if (global.LOGGER) {
   middlewares.push(logger)
 }
 
+console.log(global.window, '<---- global check')
 const store = createStore(
   reducer,
   Map(),
   compose(
     applyMiddleware(...middlewares),
-      // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      global.window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
       // DevTools.instrument(),
       // persistState()
   )

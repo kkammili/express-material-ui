@@ -29,7 +29,6 @@ class Home extends Component {
     classes: PropTypes.object.isRequired
   }
   componentDidMount(){
-      console.log(this.props, '<---- props check')
       this.props.getUser()
   }
 
