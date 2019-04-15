@@ -13,7 +13,8 @@ import authRoutes from './routes/auth.routes'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import MainRouter from './../client/MainRouter'
-import StaticRouter from 'react-router-dom/StaticRouter'
+// import StaticRouter from 'react-router-dom/StaticRouter'
+const StaticRouter = require("react-router-dom").StaticRouter
 
 
 //comment out before building for production
