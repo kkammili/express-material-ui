@@ -1,30 +1,24 @@
 import {Map} from 'immutable'
-import {applyMiddleware, createStore, compose} from 'redux'
+import {applyMiddleware, createStore} from 'redux'
 import thunk from 'redux-thunk'
 import {routerMiddleware} from 'react-router-redux'
 import {createMemoryHistory} from 'history'
 import reducer from './reducer'
 import logger from 'redux-logger'
-import config from '../config/config'
+import {composeWithDevTools} from 'redux-devtools-extension'
 
 export const history = createMemoryHistory()
 const middlewares = [
   thunk,
-  routerMiddleware(history)
+  routerMiddleware(history),
+  logger
 ]
-
-if (global.LOGGER) {
-  middlewares.push(logger)
-}
-
 
 const store = createStore(
   reducer,
   Map(),
-  compose(
+  composeWithDevTools(
     applyMiddleware(...middlewares)
-      // ,
-      // global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )
 
