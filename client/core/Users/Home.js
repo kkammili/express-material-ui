@@ -4,9 +4,12 @@ import {withStyles} from 'material-ui/styles'
 import Card, {CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import seashellImg from '../../assets/images/seashell.jpg'
-import {getUser} from './redux/actions'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
+
+import {getUser} from './redux/actions'
+import {allUserList} from '../Users/redux/memoized-selectors'
+import {usersList} from "./redux/input-selectors";
 
 
 const styles = theme => ({
@@ -54,5 +57,5 @@ class Home extends Component {
 
 export default compose(
     withStyles(styles, {name:'Home'}),
-    connect(null, {getUser})
+    connect(allUserList, {getUser})
 )(Home)

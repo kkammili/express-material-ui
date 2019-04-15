@@ -17,12 +17,14 @@ if (global.LOGGER) {
   middlewares.push(logger)
 }
 
+
 const store = createStore(
   reducer,
   Map(),
   compose(
-    applyMiddleware(...middlewares),
-      config.window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middlewares)
+      // ,
+      // global.__REDUX_DEVTOOLS_EXTENSION__ && global.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )
 

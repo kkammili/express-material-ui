@@ -5,11 +5,11 @@
 import {combineReducers} from 'redux-immutable'
 import {LOCATION_CHANGE} from 'react-router-redux'
 import http from './http/redux'
+import Users from '../client/core/Users/redux/reducer'
 // import {FormsReducer} from '../utils/form_utils'
 import {fromJS, Map} from 'immutable'
 
 // import AppReducer from '../../src/app/redux/reducer'
-
 
 const initialState = fromJS({
   locationBeforeTransitions: null
@@ -26,6 +26,7 @@ function Routes (state = initialState, {type, payload} = {}) {
 const appReducer = combineReducers({
   Routes,
   [http.key]: http,
+  [Users.key]: Users
   // Forms: FormsReducer,
   // [AppReducer.key]: AppReducer,
 })
