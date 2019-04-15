@@ -5,9 +5,7 @@ import {routerMiddleware} from 'react-router-redux'
 import {createMemoryHistory} from 'history'
 import reducer from './reducer'
 import logger from 'redux-logger'
-// import {composeWithDevTools} from 'remote-redux-devtools'
-// import DevTools from '../DevTools/DevTools'
-// import {persistState} from 'redux-devtools'
+import config from '../config/config'
 
 export const history = createMemoryHistory()
 const middlewares = [
@@ -19,15 +17,12 @@ if (global.LOGGER) {
   middlewares.push(logger)
 }
 
-console.log(global.window, '<---- global check')
 const store = createStore(
   reducer,
   Map(),
   compose(
     applyMiddleware(...middlewares),
-      global.window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-      // DevTools.instrument(),
-      // persistState()
+      config.window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )
 
