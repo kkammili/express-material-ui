@@ -1,5 +1,10 @@
 {
   "extends": [
     "c2-react"
-  ]
+  ],
+  "settings": {
+    "react":{
+      "version":"detect"
+    }
+  }
 }
