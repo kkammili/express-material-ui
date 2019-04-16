@@ -1,6 +1,6 @@
-import jsFetchHelper from "../../../../redux/http";
 import {createAction} from "../../../../redux/utils/redux-utils";
 import {receivedResponse, sendingRequest} from "../../../../redux/http/redux";
+import axios from 'axios'
 
 export const SIGN_IN = 'SIGN_IN' //post
 export const signInSuccess = createAction(SIGN_IN, 'id', 'signIn')
@@ -9,21 +9,21 @@ export const signIn = (userDetails) => {
     const id = signInId()
     return dispatch => {
         dispatch(sendingRequest(id))
-        fetch('/auth/signin', {
-            method:'POST',
+        return axios.post('/auth/signin', {
             headers:{
                 'Accept':'application/json',
                 'Content-Type': 'application/json',
             },
-            credentials:'include',
-            body:JSON.stringify(userDetails)
+            withCredentials:true,
+            data:JSON.stringify(userDetails)
         })
-            .then(res => res.json())
             .then(data =>{
                 dispatch(receivedResponse(id))
                 return dispatch(signInSuccess(id, data))
             })
-            .catch(errors => dispatch(receivedResponse(id, {errors})))
+            .catch(errors => {
+                return dispatch(receivedResponse(id, errors.response))
+            })
     }
 }
 

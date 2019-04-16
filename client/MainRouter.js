@@ -6,7 +6,7 @@ import store from '../redux/store'
 import Home from './core/Users/Home'
 import Users from './core/Users/Users'
 import Signup from './core/Sign/SignUp'
-// import Signin from './auth/Signin'
+import Signin from './core/Sign/SignIn'
 // import EditProfile from './user/EditProfile'
 // import Profile from './user/Profile'
 // import PrivateRoute from './auth/PrivateRoute'
@@ -20,9 +20,9 @@ class MainRouter extends Component {
           <Menu />
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/users' component={Users} />
-            <Route path='/signup' component={Signup} />
-            {/* <Route path="/signin" component={Signin}/> */}
+            <Route exact path='/users' component={Users} />
+            <Route exact path='/signup' component={Signup} />
+             <Route exact path="/signin" component={Signin}/>
             {/* <PrivateRoute path="/user/edit/:userId" component={EditProfile}/> */}
             {/* <Route path="/user/:userId" component={Profile}/> */}
           </Switch>
