@@ -14,24 +14,20 @@ const Menu = withRouter(({history}) => (
           MERN Skeleton
       </Link>
       <Link to="/users">Users</Link>
-      {
-        !auth.isAuthenticated() && (
             <span>
           <Link to="/signup">Sign up</Link>
           <Link to="/signin">Sign In</Link>
         </span>
-        )
-      }
-      {
-        auth.isAuthenticated() && (<span>
-          <Link to={"/user/" + auth.isAuthenticated().user._id}>
-            My Profile
-          </Link>
-          <button onClick={() => {
-              auth.signout(() => history.push('/'))
-            }}>Sign out</button>
-        </span>)
-      }
+      {/*{*/}
+        {/*auth.isAuthenticated() && (<span>*/}
+          {/*<Link to={"/user/" + auth.isAuthenticated().user._id}>*/}
+            {/*My Profile*/}
+          {/*</Link>*/}
+          {/*<button onClick={() => {*/}
+              {/*auth.signout(() => history.push('/'))*/}
+            {/*}}>Sign out</button>*/}
+        {/*</span>)*/}
+      {/*}*/}
   </div>
 ))
 
