@@ -4,11 +4,16 @@ All user login endpoints are created using express.
 Material UI is used for front-end UI development.
 
 
-##Starting the App
+## Starting the App
 **Step1 :-** Clone the repository
+<!-- blank line -->
 **Step2 :-** Open command line in the cloned folder,
+<!-- blank line -->
                 - To install dependencies, run ```  yarn install  ```
+             <!-- blank line -->
                 - To run the application for development, run ```  yarn build:serve  ```
+                <!-- blank line -->
+
 **Step3 :-** Open [localhost:3000](http://localhost:3000/) in the browser
 <!-- blank line -->
 _You are good to go ;)_
