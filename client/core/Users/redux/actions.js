@@ -1,6 +1,6 @@
 import {sendingRequest, receivedResponse} from '../../../../redux/http/redux'
 import {createAction} from '../../../../redux/utils/redux-utils'
-import jsFetchHelper from '../../../../redux/http/index'
+import axios from 'axios'
 
 export const FETCH_USER = 'FETCH_USER' // list
 export const getUserSuccess = createAction(FETCH_USER, 'id', 'users')
@@ -9,11 +9,10 @@ export const getUser = () => {
   const id = getUserId()
   return dispatch => {
     dispatch(sendingRequest(id))
-    fetch('/api/users')
-      .then(res => res.json())
-      .then(data => {
+    return axios.get('/api/users')
+      .then(res => {
         dispatch(receivedResponse(id))
-        return dispatch(getUserSuccess(id, data))
+        return dispatch(getUserSuccess(id, res.data))
       })
       .catch(errors => dispatch(receivedResponse(id, {errors})))
   }
@@ -26,17 +25,13 @@ export const createSingleUser = (userDetails) => {
   const id = createSingleUserId()
   return dispatch => {
     dispatch(sendingRequest(id))
-    fetch('/api/users', jsFetchHelper({body: userDetails}))
-      .then(res => {
-          res.json()
-      })
+    return axios.post('/api/users', {userDetails})
       .then(data => {
         dispatch(receivedResponse(id))
         return dispatch(createSingleUserSuccess(id, data))
       })
       .catch(errors => {
-          dispatch(receivedResponse(id, {errors}))
-          return dispatch(receivedResponse(id, {errors}))
+        return dispatch(receivedResponse(id, errors.response))
       })
   }
 }
