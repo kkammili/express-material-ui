@@ -7,11 +7,6 @@ import seashellImg from '../../assets/images/seashell.jpg'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 
-import {getUser} from './redux/actions'
-import {allUserList} from '../Users/redux/memoized-selectors'
-import {usersList} from "./redux/input-selectors";
-
-
 const styles = theme => ({
     card: {
         maxWidth: 600,
@@ -29,10 +24,7 @@ const styles = theme => ({
 
 class Home extends Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired
-  }
-  componentDidMount(){
-      this.props.getUser()
+    classes: PropTypes.object.isRequired,
   }
 
     render() {
@@ -57,5 +49,5 @@ class Home extends Component {
 
 export default compose(
     withStyles(styles, {name:'Home'}),
-    connect(allUserList, {getUser})
+    connect(null, null)
 )(Home)

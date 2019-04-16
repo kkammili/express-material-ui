@@ -9,7 +9,7 @@ export const getUser = () => {
   const id = getUserId()
   return dispatch => {
     dispatch(sendingRequest(id))
-    fetch('/api/users')
+     fetch('/api/users')
       .then(res => res.json())
         .then(data =>{
             dispatch(receivedResponse(id))
