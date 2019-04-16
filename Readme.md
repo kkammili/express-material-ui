@@ -1,12 +1,4 @@
-# Description of App
-Isomorphic app which serves the react web pages through express.
-
-All user login endpoints are created using express.
-
-Material UI is used for front-end UI development.
-
-
-## Starting the App
+# Starting the App
 **Step1 :-** Clone the repository
 
 **Step2 :-** Open command line in the cloned folder,
@@ -18,6 +10,17 @@ Material UI is used for front-end UI development.
 
 _You are good to go ;)_
 
+<!-- blank line -->
+
+
+## Description of App
+Isomorphic app which serves the react web pages through express.
+
+All user login endpoints are created using express.
+
+Material UI is used for front-end UI development.
+
+<!-- blank line -->
 
 #### What you need to run this code
 1. Node (11.14.0)
