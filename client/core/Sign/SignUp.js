@@ -9,7 +9,8 @@ import Button from 'material-ui/Button'
 import {compose} from 'redux'
 import {withStyles} from 'material-ui/styles'
 import Icon from 'material-ui/Icon'
-// import Dialog, {DialogContent, DialogContentText} from 'material-ui/Dialog'
+import {Link} from 'react-router-dom'
+import Dialog, {DialogContent, DialogContentText, DialogActions, DialogTitle} from 'material-ui/Dialog'
 
 const styles = theme => ({
   card: {
@@ -36,8 +37,8 @@ export class SignUp extends Component {
     this.state = {
       name: '',
       password: '',
-      email: ''
-      // open: false,
+      email: '',
+      open: false
       // error: ''
     }
   }
@@ -57,11 +58,16 @@ clickSubmit = () => {
     email: this.state.email || undefined,
     password: this.state.password || undefined
   }
-  this.props.createSingleUser(user).then(res=> {
-      const error =res.response.data.error
-      if(error){
-          this.setState({error})
-      }
+  this.props.createSingleUser(user).then(res => {
+    if (res.type === 'CREATE_SINGLE_USER') {
+      this.setState({
+        open: true
+      })
+    } else {
+      this.setState({
+        error: res.response.data.error
+      })
+    }
   })
 }
 
@@ -103,8 +109,8 @@ render () {
           /><br />
           {this.state.error && (
             <Typography
-                component='p'
-                color='error'>
+              component='p'
+              color='error'>
               <Icon color='error' className={classes.error}>error</Icon>
               {this.state.error}</Typography>)}
         </CardContent>
@@ -119,6 +125,21 @@ render () {
           </Button>
         </CardActions>
       </Card>
+      <Dialog open={this.state.open} disableBackdropClick>
+        <DialogTitle>New Account</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+                New account successfully created.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Link to='/signin'>
+            <Button color='primary' autoFocus='autoFocus' variant='raised'>
+                    Sign In
+            </Button>
+          </Link>
+        </DialogActions>
+      </Dialog>
     </Fragment>
   )
 }

@@ -6,17 +6,11 @@ export const SIGN_IN = 'SIGN_IN' //post
 export const signInSuccess = createAction(SIGN_IN, 'id', 'signIn')
 export const signInId = () => `signInId`
 export const signIn = (userDetails) => {
+
     const id = signInId()
     return dispatch => {
         dispatch(sendingRequest(id))
-        return axios.post('/auth/signin', {
-            headers:{
-                'Accept':'application/json',
-                'Content-Type': 'application/json',
-            },
-            withCredentials:true,
-            data:JSON.stringify(userDetails)
-        })
+        return axios.post('/auth/signin', userDetails)
             .then(data =>{
                 dispatch(receivedResponse(id))
                 return dispatch(signInSuccess(id, data))

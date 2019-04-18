@@ -2,7 +2,7 @@
 
 const auth = {
   isAuthenticated() {
-    if (typeof window == "undefined")
+    if (typeof window === "undefined")
       return false
 
     if (sessionStorage.getItem('jwt'))

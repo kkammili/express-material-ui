@@ -25,7 +25,7 @@ export const createSingleUser = (userDetails) => {
   const id = createSingleUserId()
   return dispatch => {
     dispatch(sendingRequest(id))
-    return axios.post('/api/users', {userDetails})
+    return axios.post('/api/users', userDetails)
       .then(data => {
         dispatch(receivedResponse(id))
         return dispatch(createSingleUserSuccess(id, data))
