@@ -59,7 +59,7 @@ clickSubmit = () => {
   }
   this.props.signIn(user).then((data) => {
     if (data.type === 'SIGN_IN') {
-      auth.authenticate(data, () => {
+      auth.authenticate(data.signIn.data, () => {
         this.setState({redirectToReferrer: true})
       })
     } else {

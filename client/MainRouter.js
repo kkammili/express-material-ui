@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router'
 import {Provider} from 'react-redux'
-// import DevTools from '../DevTools/DevTools'
 import store from '../redux/store'
 import Home from './core/Users/Home'
 import Users from './core/Users/Users'
-import Signup from './core/Sign/SignUp'
-import Signin from './core/Sign/SignIn'
-// import EditProfile from './user/EditProfile'
-// import Profile from './user/Profile'
-// import PrivateRoute from './auth/PrivateRoute'
+import SignUp from './core/Sign/SignUp'
+import SignIn from './core/Sign/SignIn'
+import Profile from './core/Users/Profile'
+
+import PrivateRoute from './auth/PrivateRoute'
 import Menu from './core/Menu'
+import {withRouter} from 'react-router'
 
 class MainRouter extends Component {
   render () {
@@ -21,16 +21,17 @@ class MainRouter extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/users' component={Users} />
-            <Route exact path='/signup' component={Signup} />
-             <Route exact path="/signin" component={Signin}/>
+            <Route exact path='/user/:userId' component={Profile} />
+            <Route exact path='/signup' component={SignUp} />
+            <Route exact path='/signin' component={SignIn} />
             {/* <PrivateRoute path="/user/edit/:userId" component={EditProfile}/> */}
             {/* <Route path="/user/:userId" component={Profile}/> */}
           </Switch>
-          {/*<DevTools/>*/}
+          {/* <DevTools/> */}
         </Provider>
       </div>
     )
   }
 }
 
-export default MainRouter
+export default withRouter(MainRouter)

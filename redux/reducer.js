@@ -6,6 +6,7 @@ import {combineReducers} from 'redux-immutable'
 import {LOCATION_CHANGE} from 'react-router-redux'
 import http from './http/redux'
 import Users from '../client/core/Users/redux/reducer'
+import SignIn from '../client/core/Sign/redux/reducer'
 // import {FormsReducer} from '../utils/form_utils'
 import {fromJS, Map} from 'immutable'
 
@@ -26,7 +27,8 @@ function Routes (state = initialState, {type, payload} = {}) {
 const appReducer = combineReducers({
   Routes,
   [http.key]: http,
-  [Users.key]: Users
+  [Users.key]: Users,
+  [SignIn.key]: SignIn
   // Forms: FormsReducer,
   // [AppReducer.key]: AppReducer,
 })

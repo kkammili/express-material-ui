@@ -1,6 +1,7 @@
 import {sendingRequest, receivedResponse} from '../../../../redux/http/redux'
 import {createAction} from '../../../../redux/utils/redux-utils'
 import axios from 'axios'
+import axiosRawClient from '../../../../redux/utils/axiosRawClient'
 
 export const FETCH_USER = 'FETCH_USER' // list
 export const getUserSuccess = createAction(FETCH_USER, 'id', 'users')
@@ -36,25 +37,18 @@ export const createSingleUser = (userDetails) => {
   }
 }
 
+
 export const FETCH_SINGLE_USER = 'FETCH_SINGLE_USER' // read
 export const fetchSingleUserSuccess = createAction(FETCH_SINGLE_USER, 'id', 'users')
 export const fetchSingleUserId = () => `fetchSingleUserId`
-export const fetchSingleUser = (userId, credentials) => {
+export const fetchSingleUser = (userId, token) => {
   const id = fetchSingleUserId()
   return dispatch => {
     dispatch(sendingRequest(id))
-    fetch('/api/users' + userId, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json',
-        'Authorization': 'Bearer ' + credentials.t
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
+   axiosRawClient.get('api/users/'+userId, {headers:{Authorization: `Bearer ${token}`, withCredentials:true}})
+      .then(res => {
         dispatch(receivedResponse(id))
-        return dispatch(fetchSingleUserSuccess(id, data))
+        return dispatch(fetchSingleUserSuccess(id, res.data))
       })
       .catch(errors => dispatch(receivedResponse(id, {errors})))
   }

@@ -1,7 +1,7 @@
 {
   "name": "mern-skeleton",
   "version": "1.0.0",
-  "description": "A MERN stack skeleton web application",
+  "description": "A Express Authentication web application",
   "author": "Shama Hoque",
   "license": "MIT",
   "keywords": [

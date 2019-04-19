@@ -16,19 +16,30 @@ import IconButton from 'material-ui/IconButton'
 import {Link} from 'react-router-dom'
 import {List} from 'immutable'
 
+// const styles = theme => ({
+//   card: {
+//     maxWidth: 600,
+//     margin: 'auto',
+//     marginTop: theme.spacing.unit * 5
+//   },
+//   title: {
+//     padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 2.5}px ${theme.spacing.unit * 2}px`,
+//     color: theme.palette.text.secondary
+//   },
+//   media: {
+//     minHeight: 330
+//   }
+// })
+
 const styles = theme => ({
-  card: {
-    maxWidth: 600,
-    margin: 'auto',
-    marginTop: theme.spacing.unit * 5
-  },
-  title: {
-    padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 2.5}px ${theme.spacing.unit * 2}px`,
-    color: theme.palette.text.secondary
-  },
-  media: {
-    minHeight: 330
-  }
+    root: theme.mixins.gutters({
+        padding: theme.spacing.unit,
+        margin: theme.spacing.unit * 5
+    }),
+    title: {
+        margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
+        color: theme.palette.openTitle
+    }
 })
 
 class Users extends Component {

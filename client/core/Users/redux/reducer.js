@@ -8,6 +8,8 @@ function Users (state = Map(), {type, ...action}) {
     //   return state.set('somethingSample', Map({'name':'krishna'}))
       case actions.FETCH_USER:
         return state.set('usersList', fromJS(action.users))
+      case actions.FETCH_SINGLE_USER:
+          return state.set('userProfile', fromJS(action.users))
     default: return state
   }
 }
