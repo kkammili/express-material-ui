@@ -61,7 +61,7 @@ export const updateSingleUser = (userId, credentials, user) => {
   const id = updateSingleUserId()
   return dispatch => {
     dispatch(sendingRequest(id))
-    fetch('/api/users' + userId, {
+    axios.put('/api/users' + userId, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -70,7 +70,6 @@ export const updateSingleUser = (userId, credentials, user) => {
       },
       body: JSON.stringify(user)
     })
-      .then(res => res.json())
       .then(data => {
         dispatch(receivedResponse(id))
         return dispatch(updateSingleUserSuccess(id, data))

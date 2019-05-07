@@ -7,6 +7,7 @@ import Users from './core/Users/Users'
 import SignUp from './core/Sign/SignUp'
 import SignIn from './core/Sign/SignIn'
 import Profile from './core/Users/Profile'
+import EditProfile from './core/Users/EditProfile'
 
 import PrivateRoute from './auth/PrivateRoute'
 import Menu from './core/Menu'
@@ -24,7 +25,7 @@ class MainRouter extends Component {
             <Route exact path='/user/:userId' component={Profile} />
             <Route exact path='/signup' component={SignUp} />
             <Route exact path='/signin' component={SignIn} />
-            {/* <PrivateRoute path="/user/edit/:userId" component={EditProfile}/> */}
+             <PrivateRoute exact path="/user/edit/:userId" component={EditProfile}/>
             {/* <Route path="/user/:userId" component={Profile}/> */}
           </Switch>
           {/* <DevTools/> */}
